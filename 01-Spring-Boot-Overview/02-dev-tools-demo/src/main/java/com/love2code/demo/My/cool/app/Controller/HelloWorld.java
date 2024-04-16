@@ -10,4 +10,10 @@ public class HelloWorld {
     public String index(){
         return "Hello world";
     }
+
+//    expose new endpoint
+    @GetMapping("/hello")
+    public String getHello(){
+        return "<h1>Working correctly<h1>";
+    }
 }
