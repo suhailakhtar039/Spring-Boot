@@ -1,5 +1,5 @@
 package com.practice.springcoredemo;
 
-public interface Coack {
+public interface Coach {
     String getDailyWorkout();
 }
