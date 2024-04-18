@@ -19,8 +19,14 @@ public class CruddemoApplication {
     @Bean
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
-            deleteStudent(studentDAO);
+            deleteAllStudent(studentDAO);
         };
+    }
+
+    private void deleteAllStudent(StudentDAO studentDAO) {
+        System.out.println("Deleting all row");
+        int row = studentDAO.deleteAll();
+        System.out.println("Deleted rows are: " + row);
     }
 
     private void deleteStudent(StudentDAO studentDAO) {
