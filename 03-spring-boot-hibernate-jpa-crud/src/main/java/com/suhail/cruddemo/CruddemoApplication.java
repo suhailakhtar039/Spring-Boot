@@ -19,12 +19,26 @@ public class CruddemoApplication {
     @Bean
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
-            queryForStudentsByLastName(studentDAO);
+            updateStudent(studentDAO);
         };
     }
 
+    private void updateStudent(StudentDAO studentDAO) {
+        int studentId = 1;
+        System.out.println("Getting student with id: " + studentId);
+        Student student = studentDAO.findById(studentId);
+
+        System.out.println("Updating student.....");
+        student.setFirstName("ABC");
+        studentDAO.update(student);
+
+        System.out.println("Updated student....");
+        System.out.println(student);
+
+    }
+
     private void queryForStudentsByLastName(StudentDAO studentDAO) {
-        List<Student> students = studentDAO.findByLastName("nick");
+        List<Student> students = studentDAO.findByLastName("abc");
         System.out.println(students);
     }
 
