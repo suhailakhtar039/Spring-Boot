@@ -19,6 +19,9 @@ public class Employee {
     @Column(name = "email")
     String email;
 
+    public Employee() {
+    }
+
     public Employee(String firstName, String latName, String email) {
         this.firstName = firstName;
         this.latName = latName;
@@ -55,5 +58,15 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", latName='" + latName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
