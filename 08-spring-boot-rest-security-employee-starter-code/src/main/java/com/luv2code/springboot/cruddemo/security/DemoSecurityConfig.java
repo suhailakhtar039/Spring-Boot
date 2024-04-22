@@ -16,8 +16,13 @@ public class DemoSecurityConfig {
 
     // add support for JDBC
     @Bean
-    public UserDetailsManager userDetailsManager(DataSource dataSource){
-        return new JdbcUserDetailsManager(dataSource);
+    public UserDetailsManager userDetailsManager(DataSource dataSource) {
+        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+
+        jdbcUserDetailsManager.setUsersByUsernameQuery("select user_id, pw, active from members where user_id=?");
+        jdbcUserDetailsManager.setAuthoritiesByUsernameQuery("select user_id, role from roles where user_id=?");
+
+        return jdbcUserDetailsManager;
     }
 
     @Bean
@@ -31,10 +36,10 @@ public class DemoSecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/api/employees/**").hasRole("ADMIN")
         );
 
-        //use http with basic authentication
+        // use http with basic authentication
         http.httpBasic(Customizer.withDefaults());
 
-        //disable CSRF
+        // disable CSRF
         http.csrf(csrf -> csrf.disable());
 
         return http.build();
