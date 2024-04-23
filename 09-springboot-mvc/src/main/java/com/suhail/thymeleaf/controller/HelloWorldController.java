@@ -1,20 +1,37 @@
 package com.suhail.thymeleaf.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Locale;
 
 @Controller
 public class HelloWorldController {
 
     @RequestMapping("/showForm")
-    public String showForm(){
+    public String showForm() {
         return "helloworld-form";
     }
 
     // @RequestMapping("")
     @RequestMapping("/processForm")
-    public String processForm(){
+    public String processForm() {
         return "helloworld";
     }
+
+    @RequestMapping("/processFormVersionTwo")
+    public String letShoutDude(HttpServletRequest request, Model model) {
+
+        String name = request.getParameter("studentName");
+
+        name = name.toUpperCase();
+
+        String ans = "Yo " + name;
+        model.addAttribute("message", ans);
+        return "helloworld";
+    }
+
 }
 
