@@ -4,8 +4,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Locale;
 
 @Controller
 public class HelloWorldController {
@@ -25,6 +25,18 @@ public class HelloWorldController {
     public String letShoutDude(HttpServletRequest request, Model model) {
 
         String name = request.getParameter("studentName");
+
+        name = name.toUpperCase();
+
+        String ans = "Yo " + name;
+        model.addAttribute("message", ans);
+        return "helloworld";
+    }
+
+    @RequestMapping("/processFormVersionThree")
+    public String processFormVersionThree(@RequestParam("studentName") String studentName, Model model) {
+
+        String name = studentName;
 
         name = name.toUpperCase();
 
