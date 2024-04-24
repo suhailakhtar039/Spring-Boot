@@ -12,14 +12,19 @@
 <body>
     <i>Fill out the form. Asterisk(*) mean required.</i>
     <br><br>
-    <form th:action="@{/processForm}" th:object="customer" method="post">
+    <form th:action="@{/processForm}" th:object="${customer}" method="post">
         First name: <input type="text" th:field="*{firstName}"/>
         <br><br>
         Last name: <input type="text" th:field="*{lastName}"/>
-        <br><br>
         <!----check for errors -->
-        <span th:if="${#fields.hasErrors('lastName'}" th:errors="*{lastName}" class="error"></span>
-        <input type="submit" value="Submit">
+        <!-- Add error message (if present) -->
+        <span th:if="${#fields.hasErrors('lastName')}"
+              th:errors="*{lastName}"
+              class="error"></span>
+
+        <br><br>
+
+        <input type="submit" value="Submit" />
     </form>
 </body>
 </html>
