@@ -6,12 +6,20 @@
 </head>
 <body>
     <h3>Student Configuration</h3>
+
     The Student in confirmed: <span th:text="${student.firstName} + ' ' + ${student.lastName}"/>
     <br><br>
+
     Country: <span th:text="${student.country}"/>
     <br><br>
+
     Favorite Language: <span th:text="${student.favoriteLanguage}"/>
     <br><br>
-    Favorite Operating Systems: <span th:text="${student.favoriteSystems}"/>
+
+    Favorite Operating Systems:
+    <ul>
+        <li th:each="tempFavorite : ${student.favoriteSystems}" th:text="${tempFavorite}">
+    </ul>
+
 </body>
 </html>
