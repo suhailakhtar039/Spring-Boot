@@ -1,7 +1,7 @@
-package com.luv2code.springboot.cruddemo.controller;
+package com.luv2code.springboot.thymeleaf.controller;
 
-import com.luv2code.springboot.cruddemo.entity.Employee;
-import com.luv2code.springboot.cruddemo.service.EmployeeService;
+import com.luv2code.springboot.thymeleaf.entity.Employee;
+import com.luv2code.springboot.thymeleaf.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
