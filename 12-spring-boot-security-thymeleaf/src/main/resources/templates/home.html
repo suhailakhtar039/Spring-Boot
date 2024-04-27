@@ -18,6 +18,12 @@
         Role(s): <span sec:authentication="principal.authorities"></span>
     </p>
     <hr>
+    <p>
+        <a th:href="@{/leaders}">Leadership Meeting</a>
+        (Only for manager)
+    </p>
+    <hr>
+
     <form action="#" th:action="@{/logout}" method="post">
         <input type="submit" th:value="logout" value="Logout">
     </form>
