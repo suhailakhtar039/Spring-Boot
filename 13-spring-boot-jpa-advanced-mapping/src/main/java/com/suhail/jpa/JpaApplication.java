@@ -18,13 +18,20 @@ public class JpaApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
-			createInstructor(appDAO);
+			//createInstructor(appDAO);
+			findInstructor(appDAO);
 		};
 	}
 
+	private void findInstructor(AppDAO appDAO) {
+		Instructor instructor = appDAO.findInstructorById(3);
+		System.out.println(instructor);
+		System.out.println("associated instructor detail " + instructor.getInstructorDetail());
+	}
+
 	private void createInstructor(AppDAO appDAO) {
-		Instructor instructor = new Instructor("Suhail", "Akhtar", "suhail@abc.com");
-		InstructorDetail instructorDetail = new InstructorDetail("http://www.abc.com", "sports");
+		Instructor instructor = new Instructor("abc", "xyz", "xyz@abc.com");
+		InstructorDetail instructorDetail = new InstructorDetail("http://www.abc.com", "piano");
 
 		instructor.setInstructorDetail(instructorDetail);
 		System.out.println("saving instructor " + instructor);
