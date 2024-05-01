@@ -18,9 +18,15 @@ public class JpaApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
-			//createInstructor(appDAO);
-			findInstructor(appDAO);
+			// createInstructor(appDAO);
+			//findInstructor(appDAO);
+			deleteInstructor(appDAO);
 		};
+	}
+
+	private void deleteInstructor(AppDAO appDAO) {
+		appDAO.deleteInstructorById(3);
+		System.out.println("Done");
 	}
 
 	private void findInstructor(AppDAO appDAO) {
