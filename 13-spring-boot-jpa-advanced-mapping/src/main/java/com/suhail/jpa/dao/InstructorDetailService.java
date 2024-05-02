@@ -21,6 +21,8 @@ public class InstructorDetailService {
     }
 
     public void deleteInstructorDetailById(int id){
-        instructorDetailRepository.deleteById(id);
+        InstructorDetail instructorDetail = findById(id);
+        instructorDetail.getInstructor().setInstructorDetail(null);
+        instructorDetailRepository.delete(instructorDetail);
     }
 }

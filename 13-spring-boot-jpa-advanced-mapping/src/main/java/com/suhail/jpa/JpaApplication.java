@@ -54,8 +54,8 @@ public class JpaApplication {
 	}
 
 	private void createInstructor(AppDAO appDAO) {
-		Instructor instructor = new Instructor("abc", "xyz", "xyz@abc.com");
-		InstructorDetail instructorDetail = new InstructorDetail("http://www.abc.com", "piano");
+		Instructor instructor = new Instructor("sample", "check", "sample@check.com");
+		InstructorDetail instructorDetail = new InstructorDetail("http://www.sample-check.com", "helping other");
 
 		instructor.setInstructorDetail(instructorDetail);
 		System.out.println("saving instructor " + instructor);
