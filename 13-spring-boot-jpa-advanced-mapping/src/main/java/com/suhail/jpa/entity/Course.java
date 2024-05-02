@@ -1,23 +1,27 @@
 package com.suhail.jpa.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "course")
 public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
+    @Column(name = "title")
     private String title;
 
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 
     public Course() {
     }
 
-    public Course(String title, Instructor instructor) {
+    public Course(String title) {
         this.title = title;
-        this.instructor = instructor;
     }
 
     public int getId() {
@@ -49,7 +53,6 @@ public class Course {
         return "Course{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", instructor=" + instructor +
                 '}';
     }
 }
