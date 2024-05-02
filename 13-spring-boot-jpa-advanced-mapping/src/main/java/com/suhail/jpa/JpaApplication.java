@@ -1,6 +1,7 @@
 package com.suhail.jpa;
 
 import com.suhail.jpa.dao.AppDAO;
+import com.suhail.jpa.dao.InstructorDetailService;
 import com.suhail.jpa.entity.Instructor;
 import com.suhail.jpa.entity.InstructorDetail;
 import org.springframework.boot.CommandLineRunner;
@@ -16,12 +17,21 @@ public class JpaApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(AppDAO appDAO){
+	public CommandLineRunner commandLineRunner(InstructorDetailService instructorDetailService){
 		return runner -> {
 			// createInstructor(appDAO);
 			//findInstructor(appDAO);
-			deleteInstructor(appDAO);
+			// deleteInstructor(appDAO);
+			findInstructorDetail(instructorDetailService);
 		};
+	}
+
+	private void findInstructorDetail(InstructorDetailService instructorDetailService) {
+		int id = 2;
+		InstructorDetail instructorDetail = instructorDetailService.findById(id);
+		System.out.println("instructorDetail = " + instructorDetail);
+		System.out.println("Instructur = " + instructorDetail.getInstructor());
+		System.out.println("!Done");
 	}
 
 	private void deleteInstructor(AppDAO appDAO) {
