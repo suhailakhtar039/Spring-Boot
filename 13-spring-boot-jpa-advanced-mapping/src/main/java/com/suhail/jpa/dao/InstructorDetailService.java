@@ -19,4 +19,8 @@ public class InstructorDetailService {
         Optional<InstructorDetail> instructorDetail = instructorDetailRepository.findById(id);
         return instructorDetail.get();
     }
+
+    public void deleteInstructorDetailById(int id){
+        instructorDetailRepository.deleteById(id);
+    }
 }

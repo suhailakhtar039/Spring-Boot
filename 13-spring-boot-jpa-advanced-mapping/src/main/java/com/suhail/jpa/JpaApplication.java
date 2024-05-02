@@ -22,8 +22,16 @@ public class JpaApplication {
 			// createInstructor(appDAO);
 			//findInstructor(appDAO);
 			// deleteInstructor(appDAO);
-			findInstructorDetail(instructorDetailService);
+			// findInstructorDetail(instructorDetailService);
+			deleteInstructorDetail(instructorDetailService);
 		};
+	}
+
+	private void deleteInstructorDetail(InstructorDetailService instructorDetailService) {
+		System.out.println("Deleting starts");
+		int id = 2;
+		instructorDetailService.deleteInstructorDetailById(id);
+		System.out.println("Deleted!");
 	}
 
 	private void findInstructorDetail(InstructorDetailService instructorDetailService) {
