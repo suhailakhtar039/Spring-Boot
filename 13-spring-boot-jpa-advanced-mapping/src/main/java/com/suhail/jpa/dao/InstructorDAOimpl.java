@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class AppDAOimpl implements  AppDAO{
+public class InstructorDAOimpl implements InstructorDAO {
     private EntityManager entityManager;
 
     @Autowired
-    public AppDAOimpl(EntityManager entityManager){
+    public InstructorDAOimpl(EntityManager entityManager){
         this.entityManager = entityManager;
     }
 

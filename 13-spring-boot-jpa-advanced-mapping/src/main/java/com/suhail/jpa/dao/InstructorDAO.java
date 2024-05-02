@@ -2,7 +2,7 @@ package com.suhail.jpa.dao;
 
 import com.suhail.jpa.entity.Instructor;
 
-public interface AppDAO {
+public interface InstructorDAO {
 
     void save(Instructor instructor);
 

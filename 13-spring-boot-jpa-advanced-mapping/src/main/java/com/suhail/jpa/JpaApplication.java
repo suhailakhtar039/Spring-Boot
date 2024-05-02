@@ -1,6 +1,6 @@
 package com.suhail.jpa;
 
-import com.suhail.jpa.dao.AppDAO;
+import com.suhail.jpa.dao.InstructorDAO;
 import com.suhail.jpa.dao.InstructorDetailService;
 import com.suhail.jpa.entity.Instructor;
 import com.suhail.jpa.entity.InstructorDetail;
@@ -42,24 +42,24 @@ public class JpaApplication {
 		System.out.println("!Done");
 	}
 
-	private void deleteInstructor(AppDAO appDAO) {
-		appDAO.deleteInstructorById(3);
+	private void deleteInstructor(InstructorDAO instructorDAO) {
+		instructorDAO.deleteInstructorById(3);
 		System.out.println("Done");
 	}
 
-	private void findInstructor(AppDAO appDAO) {
-		Instructor instructor = appDAO.findInstructorById(3);
+	private void findInstructor(InstructorDAO instructorDAO) {
+		Instructor instructor = instructorDAO.findInstructorById(3);
 		System.out.println(instructor);
 		System.out.println("associated instructor detail " + instructor.getInstructorDetail());
 	}
 
-	private void createInstructor(AppDAO appDAO) {
+	private void createInstructor(InstructorDAO instructorDAO) {
 		Instructor instructor = new Instructor("sample", "check", "sample@check.com");
 		InstructorDetail instructorDetail = new InstructorDetail("http://www.sample-check.com", "helping other");
 
 		instructor.setInstructorDetail(instructorDetail);
 		System.out.println("saving instructor " + instructor);
-		appDAO.save(instructor);
+		instructorDAO.save(instructor);
 	}
 
 }
