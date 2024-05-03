@@ -55,4 +55,10 @@ public class InstructorDAOimpl implements InstructorDAO {
         Instructor instructor = query.getSingleResult();
         return instructor;
     }
+
+    @Override
+    @Transactional
+    public void update(Instructor instructor) {
+        entityManager.merge(instructor);
+    }
 }
