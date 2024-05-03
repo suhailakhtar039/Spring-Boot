@@ -31,8 +31,17 @@ public class JpaApplication {
 			// findInstructorWithCourses(instructorDAO);
 			// findCoursesForInstructor(instructorDAO);
 			// findInstructorWithCoursesJoinFetch(instructorDAO);
-			updateInstructor(instructorDAO);
+			// updateInstructor(instructorDAO);
+			updateCourse(instructorDAO);
 		};
+	}
+
+	private void updateCourse(InstructorDAO instructorDAO) {
+		int id = 10;
+		System.out.println("Finding course with id: " + id);
+		Course course = instructorDAO.findCourseById(id);
+		course.setTitle("Completing course!!!");
+		instructorDAO.update(course);
 	}
 
 	private void updateInstructor(InstructorDAO instructorDAO) {
