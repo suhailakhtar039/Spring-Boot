@@ -23,7 +23,7 @@ public class JpaApplication {
 	public CommandLineRunner commandLineRunner(InstructorDAO instructorDAO){
 		return runner -> {
 			// createInstructor(appDAO);
-			//findInstructor(appDAO);
+			// findInstructor(appDAO);
 			// deleteInstructor(appDAO);
 			// findInstructorDetail(instructorDetailService);
 			// deleteInstructorDetail(instructorDetailService);
@@ -32,7 +32,8 @@ public class JpaApplication {
 			// findCoursesForInstructor(instructorDAO);
 			// findInstructorWithCoursesJoinFetch(instructorDAO);
 			// updateInstructor(instructorDAO);
-			updateCourse(instructorDAO);
+			// updateCourse(instructorDAO);
+			deleteInstructor(instructorDAO);
 		};
 	}
 
@@ -117,7 +118,8 @@ public class JpaApplication {
 	}
 
 	private void deleteInstructor(InstructorDAO instructorDAO) {
-		instructorDAO.deleteInstructorById(3);
+		int id = 1;
+		instructorDAO.deleteInstructorById(id);
 		System.out.println("Done");
 	}
 
