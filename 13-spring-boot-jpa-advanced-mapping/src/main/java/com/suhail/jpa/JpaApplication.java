@@ -33,8 +33,14 @@ public class JpaApplication {
 			// findInstructorWithCoursesJoinFetch(instructorDAO);
 			// updateInstructor(instructorDAO);
 			// updateCourse(instructorDAO);
-			deleteInstructor(instructorDAO);
+			// deleteInstructor(instructorDAO);
+			deleteCourseById(instructorDAO);
 		};
+	}
+
+	private void deleteCourseById(InstructorDAO instructorDAO) {
+		int id = 10;
+		instructorDAO.deleteCourseById(id);
 	}
 
 	private void updateCourse(InstructorDAO instructorDAO) {
