@@ -83,4 +83,10 @@ public class InstructorDAOimpl implements InstructorDAO {
         Course course = entityManager.find(Course.class, id);
         entityManager.remove(course);
     }
+
+    @Override
+    @Transactional
+    public void save(Course course){
+        entityManager.persist(course);
+    }
 }

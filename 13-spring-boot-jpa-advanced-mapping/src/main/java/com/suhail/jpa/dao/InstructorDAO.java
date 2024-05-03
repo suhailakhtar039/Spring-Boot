@@ -24,4 +24,6 @@ public interface InstructorDAO {
     Course findCourseById(int id);
 
     void deleteCourseById(int id);
+
+    void save(Course course);
 }

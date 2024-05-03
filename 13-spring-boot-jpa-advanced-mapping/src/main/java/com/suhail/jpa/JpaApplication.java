@@ -5,6 +5,7 @@ import com.suhail.jpa.dao.InstructorDetailService;
 import com.suhail.jpa.entity.Course;
 import com.suhail.jpa.entity.Instructor;
 import com.suhail.jpa.entity.InstructorDetail;
+import com.suhail.jpa.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,8 +23,23 @@ public class JpaApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(InstructorDAO instructorDAO){
 		return runner -> {
-
+			createCourseAndReviews(instructorDAO);
 		};
+	}
+
+	private void createCourseAndReviews(InstructorDAO instructorDAO) {
+		Course course = new Course("How to play Mario");
+		course.addReview(new Review("great man"));
+		course.addReview(new Review("suhail akhtar"));
+		course.addReview(new Review("abcd"));
+		course.addReview(new Review("what's going on?"));
+
+		System.out.println("saving the course");
+		System.out.println(course);
+		System.out.println(course.getReviews());
+
+		instructorDAO.save(course);
+		System.out.println("Done!!!");
 	}
 
 	private void deleteCourseById(InstructorDAO instructorDAO) {
