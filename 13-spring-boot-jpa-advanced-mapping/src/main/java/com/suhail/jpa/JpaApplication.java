@@ -2,12 +2,15 @@ package com.suhail.jpa;
 
 import com.suhail.jpa.dao.InstructorDAO;
 import com.suhail.jpa.dao.InstructorDetailService;
+import com.suhail.jpa.entity.Course;
 import com.suhail.jpa.entity.Instructor;
 import com.suhail.jpa.entity.InstructorDetail;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.util.List;
 
 @SpringBootApplication
 public class JpaApplication {
@@ -17,14 +20,52 @@ public class JpaApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(InstructorDetailService instructorDetailService){
+	public CommandLineRunner commandLineRunner(InstructorDAO instructorDAO){
 		return runner -> {
 			// createInstructor(appDAO);
 			//findInstructor(appDAO);
 			// deleteInstructor(appDAO);
 			// findInstructorDetail(instructorDetailService);
-			deleteInstructorDetail(instructorDetailService);
+			// deleteInstructorDetail(instructorDetailService);
+			// createInstructorWithCourses(instructorDAO);
+			// findInstructorWithCourses(instructorDAO);
+			findCoursesForInstructor(instructorDAO);
 		};
+	}
+
+	private void findCoursesForInstructor(InstructorDAO instructorDAO) {
+		int id = 1;
+
+		Instructor instructor = instructorDAO.findInstructorById(id);
+		System.out.println("instructor = " + instructor);
+
+		List<Course> courses = instructorDAO.findCoursesByInstructorId(id);
+		instructor.setCourses(courses);
+
+		System.out.println("the associated courses: " + instructor.getCourses());
+	}
+
+	private void findInstructorWithCourses(InstructorDAO instructorDAO) {
+		int id = 1;
+		System.out.println("finding instructor having id: " + id);
+		Instructor instructorById = instructorDAO.findInstructorById(id);
+		System.out.println("instructor = " + instructorById);
+		System.out.println("courses: " + instructorById.getCourses());
+		System.out.println("Done!");
+	}
+
+	private void createInstructorWithCourses(InstructorDAO instructorDAO) {
+		Instructor instructor = new Instructor("suhail", "akhtar", "suhail@gmail.com");
+		InstructorDetail instructorDetail = new InstructorDetail("http://www.sample-check.com", "helping other");
+
+		instructor.setInstructorDetail(instructorDetail);
+		Course course1 = new Course("Air Guitar - ultimate guide");
+		Course course2 = new Course("From suhail");
+		instructor.add(course1);
+		instructor.add(course2);
+		System.out.println("Saving courses");
+		System.out.println("The courses: " + instructor.getCourses());
+		instructorDAO.save(instructor);
 	}
 
 	private void deleteInstructorDetail(InstructorDetailService instructorDetailService) {

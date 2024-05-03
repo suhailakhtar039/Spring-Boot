@@ -1,10 +1,14 @@
 package com.suhail.jpa.dao;
 
+import com.suhail.jpa.entity.Course;
 import com.suhail.jpa.entity.Instructor;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class InstructorDAOimpl implements InstructorDAO {
@@ -31,5 +35,14 @@ public class InstructorDAOimpl implements InstructorDAO {
     public void deleteInstructorById(int id) {
         Instructor instructor = findInstructorById(id);
         entityManager.remove(instructor);
+    }
+
+    @Override
+    public List<Course> findCoursesByInstructorId(int id) {
+        TypedQuery<Course> query = entityManager.createQuery("from Course where instructor.id = :data", Course.class);
+        query.setParameter("data", id);
+
+        List<Course> courses = query.getResultList();
+        return courses;
     }
 }
