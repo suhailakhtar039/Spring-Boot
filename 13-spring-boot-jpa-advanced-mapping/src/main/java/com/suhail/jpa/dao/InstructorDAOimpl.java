@@ -15,7 +15,7 @@ public class InstructorDAOimpl implements InstructorDAO {
     private EntityManager entityManager;
 
     @Autowired
-    public InstructorDAOimpl(EntityManager entityManager){
+    public InstructorDAOimpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
@@ -44,5 +44,15 @@ public class InstructorDAOimpl implements InstructorDAO {
 
         List<Course> courses = query.getResultList();
         return courses;
+    }
+
+    @Override
+    public Instructor findInstructorByIdJoinFetch(int id) {
+        TypedQuery<Instructor> query = entityManager.createQuery("select i from Instructor i " +
+                "JOIN FETCH i.courses " + "where i.id = :data", Instructor.class);
+        query.setParameter("data", id);
+
+        Instructor instructor = query.getSingleResult();
+        return instructor;
     }
 }

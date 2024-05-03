@@ -29,8 +29,20 @@ public class JpaApplication {
 			// deleteInstructorDetail(instructorDetailService);
 			// createInstructorWithCourses(instructorDAO);
 			// findInstructorWithCourses(instructorDAO);
-			findCoursesForInstructor(instructorDAO);
+			// findCoursesForInstructor(instructorDAO);
+			findInstructorWithCoursesJoinFetch(instructorDAO);
 		};
+	}
+
+	private void findInstructorWithCoursesJoinFetch(InstructorDAO instructorDAO) {
+		int id = 1;
+		System.out.println("Finding courses with id " + id);
+		Instructor instructor = instructorDAO.findInstructorByIdJoinFetch(id);
+
+		System.out.println("Instructor = " + instructor);
+		System.out.println("Associated courses " + instructor.getCourses());
+
+		System.out.println("Done!!");
 	}
 
 	private void findCoursesForInstructor(InstructorDAO instructorDAO) {
