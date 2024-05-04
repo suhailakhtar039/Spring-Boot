@@ -23,8 +23,18 @@ public class JpaApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(InstructorDAO instructorDAO){
 		return runner -> {
-			createCourseAndReviews(instructorDAO);
+			// createCourseAndReviews(instructorDAO);
+			retriveCourseAndReviews(instructorDAO);
+
 		};
+	}
+
+	private void retriveCourseAndReviews(InstructorDAO instructorDAO) {
+		int id = 10;
+		Course course = instructorDAO.findCourseAndReviewsByCourseId(id);
+		System.out.println(course);
+		System.out.println(course.getReviews());
+		System.out.println("Done!");
 	}
 
 	private void createCourseAndReviews(InstructorDAO instructorDAO) {
