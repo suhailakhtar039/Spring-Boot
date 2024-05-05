@@ -5,7 +5,7 @@ import com.suhail.jpa.entity.Instructor;
 
 import java.util.List;
 
-public interface InstructorDAO {
+public interface AppDAO {
 
     void save(Instructor instructor);
 
@@ -28,4 +28,6 @@ public interface InstructorDAO {
     void save(Course course);
 
     Course findCourseAndReviewsByCourseId(int id);
+
+    Course findCourseAndStudentByCourseId(int id);
 }

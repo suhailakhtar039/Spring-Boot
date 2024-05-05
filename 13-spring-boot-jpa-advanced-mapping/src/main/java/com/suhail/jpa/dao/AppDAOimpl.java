@@ -2,6 +2,7 @@ package com.suhail.jpa.dao;
 
 import com.suhail.jpa.entity.Course;
 import com.suhail.jpa.entity.Instructor;
+import com.suhail.jpa.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
@@ -11,11 +12,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class InstructorDAOimpl implements InstructorDAO {
+public class AppDAOimpl implements AppDAO {
     private EntityManager entityManager;
 
     @Autowired
-    public InstructorDAOimpl(EntityManager entityManager) {
+    public AppDAOimpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
@@ -96,5 +97,14 @@ public class InstructorDAOimpl implements InstructorDAO {
         query.setParameter("data", id);
 
         return query.getSingleResult();
+    }
+
+    @Override
+    public Course findCourseAndStudentByCourseId(int id) {
+        TypedQuery<Course> query = entityManager.createQuery("select c from Course c JOIN FETCH c.students where c.id = :data", Course.class);
+        query.setParameter("data", id);
+
+        Course course = query.getSingleResult();
+        return course;
     }
 }
