@@ -24,9 +24,15 @@ public class JpaApplication {
 			// findCourseAndStudents(appDAO);
 			// findStudentsAndCourses(appDAO);
 			// addMoreCoursesForStudent(appDAO);
-			deleteCourseById(appDAO);
+			// deleteCourseById(appDAO);
+			deleteStudent(appDAO);
 		};
 
+	}
+
+	private void deleteStudent(AppDAO appDAO) {
+		int id = 3;
+		appDAO.deleteStudentById(id);
 	}
 
 	private void addMoreCoursesForStudent(AppDAO appDAO) {
