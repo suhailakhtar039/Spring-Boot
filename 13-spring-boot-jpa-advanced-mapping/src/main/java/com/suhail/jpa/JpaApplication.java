@@ -23,8 +23,8 @@ public class JpaApplication {
 			// createCourseAndStudents(appDAO);
 			// findCourseAndStudents(appDAO);
 			// findStudentsAndCourses(appDAO);
-			addMoreCoursesForStudent(appDAO);
-
+			// addMoreCoursesForStudent(appDAO);
+			deleteCourseById(appDAO);
 		};
 
 	}
