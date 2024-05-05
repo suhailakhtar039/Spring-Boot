@@ -2,6 +2,7 @@ package com.suhail.jpa.dao;
 
 import com.suhail.jpa.entity.Course;
 import com.suhail.jpa.entity.Instructor;
+import com.suhail.jpa.entity.Student;
 
 import java.util.List;
 
@@ -30,4 +31,6 @@ public interface AppDAO {
     Course findCourseAndReviewsByCourseId(int id);
 
     Course findCourseAndStudentByCourseId(int id);
+
+    Student findStudentAndCoursesByStudentId(int id);
 }

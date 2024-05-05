@@ -21,9 +21,17 @@ public class JpaApplication {
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
 			// createCourseAndStudents(appDAO);
-			findCourseAndStudents(appDAO);
+			// findCourseAndStudents(appDAO);
+			findStudentsAndCourses(appDAO);
 		};
 
+	}
+
+	private void findStudentsAndCourses(AppDAO appDAO) {
+		int id = 2;
+		Student student = appDAO.findStudentAndCoursesByStudentId(id);
+		System.out.println("Student = " + student);
+		System.out.println("Courses = " + student.getCourses());
 	}
 
 	private void findCourseAndStudents(AppDAO appDAO) {
