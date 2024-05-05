@@ -23,9 +23,7 @@ public class JpaApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(InstructorDAO instructorDAO){
 		return runner -> {
-			// createCourseAndReviews(instructorDAO);
-			// retriveCourseAndReviews(instructorDAO);
-			deleteCourseAndReviews(instructorDAO);
+
 		};
 	}
 
