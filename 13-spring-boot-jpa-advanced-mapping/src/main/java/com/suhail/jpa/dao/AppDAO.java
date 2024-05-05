@@ -33,4 +33,6 @@ public interface AppDAO {
     Course findCourseAndStudentByCourseId(int id);
 
     Student findStudentAndCoursesByStudentId(int id);
+
+    void update(Student student);
 }
