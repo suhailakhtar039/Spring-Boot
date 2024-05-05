@@ -24,9 +24,15 @@ public class JpaApplication {
 	public CommandLineRunner commandLineRunner(InstructorDAO instructorDAO){
 		return runner -> {
 			// createCourseAndReviews(instructorDAO);
-			retriveCourseAndReviews(instructorDAO);
-
+			// retriveCourseAndReviews(instructorDAO);
+			deleteCourseAndReviews(instructorDAO);
 		};
+	}
+
+	private void deleteCourseAndReviews(InstructorDAO instructorDAO) {
+		int id = 10;
+		instructorDAO.deleteCourseById(id);
+		System.out.println("Done!!");
 	}
 
 	private void retriveCourseAndReviews(InstructorDAO instructorDAO) {
