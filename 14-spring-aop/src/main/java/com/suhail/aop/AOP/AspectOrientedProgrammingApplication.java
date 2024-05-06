@@ -22,6 +22,10 @@ public class AspectOrientedProgrammingApplication {
 
 	private void demoTheBeforeAdvice(AccountDAO accountDAO) {
 		accountDAO.addAccount();
+
+		System.out.println("let's call it again\n\n");
+
+		accountDAO.addAccount();
 	}
 
 }
