@@ -24,7 +24,7 @@ public class AspectOrientedProgrammingApplication {
 	private void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO) {
 		Account account = new Account();
 
-		accountDAO.addAccount(account);
+		accountDAO.addAccount(account, true);
 		membershipDAO.addAccount();
 
 	}
