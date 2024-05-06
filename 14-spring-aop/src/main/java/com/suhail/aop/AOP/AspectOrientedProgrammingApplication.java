@@ -22,7 +22,9 @@ public class AspectOrientedProgrammingApplication {
 	}
 
 	private void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO) {
-		accountDAO.addAccount();
+		Account account = new Account();
+
+		accountDAO.addAccount(account);
 		membershipDAO.addAccount();
 
 	}
