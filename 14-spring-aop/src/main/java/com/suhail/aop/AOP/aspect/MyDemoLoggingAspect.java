@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class MyDemoLoggingAspect {
-    @Before("forDaoPackageNoGetterSetter()")
+    @Before("com.suhail.aop.AOP.aspect.AopExpression.forDaoPackageNoGetterSetter()")
     public void beforeAddAccountAdvice(){
         System.out.println("============> executing before advice on addAccount");
     }
