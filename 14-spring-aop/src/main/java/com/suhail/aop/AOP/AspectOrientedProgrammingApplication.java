@@ -27,6 +27,12 @@ public class AspectOrientedProgrammingApplication {
 		accountDAO.addAccount(account, true);
 		membershipDAO.addAccount();
 
+		// call the account getter/setter
+		accountDAO.setName("Suhail");
+		accountDAO.setServiceCode("Silver");
+
+		String name = accountDAO.getName();
+		String serviceCode = accountDAO.getServiceCode();
 	}
 
 }
