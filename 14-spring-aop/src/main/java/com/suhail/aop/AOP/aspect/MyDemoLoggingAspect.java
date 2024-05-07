@@ -23,15 +23,19 @@ public class MyDemoLoggingAspect {
     @Pointcut("forDaoPackage() && !(getter() || setter())")
     private void forDaoPackageNoGetterSetter(){}
 
-    @Pointcut("execution(* com.suhail.aop.AOP.dao.*.get*())")
-
-    @Before("forDaoPackage()")
+    @Before("forDaoPackageNoGetterSetter()")
     public void beforeAddAccountAdvice(){
         System.out.println("============> executing before advice on addAccount");
     }
 
-    @Before("forDaoPackage()")
+    @Before("forDaoPackageNoGetterSetter()")
     public void performApiAnalytics(){
         System.out.println("============> executing before advice from perform Api analytics");
     }
+
+    @Before("forDaoPackageNoGetterSetter()")
+    public void logToCloud(){
+        System.out.println("============> Logging to cloud async");
+    }
+
 }
