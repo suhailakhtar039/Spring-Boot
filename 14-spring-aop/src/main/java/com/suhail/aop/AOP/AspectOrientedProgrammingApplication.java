@@ -23,6 +23,8 @@ public class AspectOrientedProgrammingApplication {
 
 	private void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO) {
 		Account account = new Account();
+		account.setName("Demo");
+		account.setLevel("4");
 
 		accountDAO.addAccount(account, true);
 		membershipDAO.addAccount();
