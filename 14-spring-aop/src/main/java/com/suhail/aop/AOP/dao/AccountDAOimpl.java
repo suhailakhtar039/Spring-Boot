@@ -3,6 +3,9 @@ package com.suhail.aop.AOP.dao;
 import com.suhail.aop.AOP.Account;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public class AccountDAOimpl implements AccountDAO{
 
@@ -42,5 +45,15 @@ public class AccountDAOimpl implements AccountDAO{
     public void setServiceCode(String serviceCode) {
         System.out.println(getClass() + " with in the set service code");
         this.serviceCode = serviceCode;
+    }
+
+    @Override
+    public List<Account> findAccounts(){
+        List<Account> myAccounts = new ArrayList<>();
+        myAccounts.add(new Account("suhail","5"));
+        myAccounts.add(new Account("akhtar","6"));
+        myAccounts.add(new Account("abcxyz","2"));
+
+        return myAccounts;
     }
 }
