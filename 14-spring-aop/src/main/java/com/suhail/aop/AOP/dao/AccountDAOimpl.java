@@ -49,6 +49,11 @@ public class AccountDAOimpl implements AccountDAO{
 
     @Override
     public List<Account> findAccounts(){
+
+    }
+
+    @Override
+    public List<Account> findAccounts(boolean tripWire) {
         List<Account> myAccounts = new ArrayList<>();
         myAccounts.add(new Account("suhail","5"));
         myAccounts.add(new Account("akhtar","6"));
