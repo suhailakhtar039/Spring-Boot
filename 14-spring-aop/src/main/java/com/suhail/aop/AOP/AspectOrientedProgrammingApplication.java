@@ -31,7 +31,7 @@ public class AspectOrientedProgrammingApplication {
         List<Account> accounts = null;
 
         try {
-            boolean tripWire = true;
+            boolean tripWire = false;
             accounts = accountDAO.findAccounts(tripWire);
         } catch (Exception exc) {
             System.out.println("Caught The Exception AfterThrowAdvice: " + exc);
