@@ -29,7 +29,7 @@ public class MyDemoLoggingAspect {
             result = proceedingJoinPoint.proceed();
         }catch (Exception exc){
             System.out.println(exc.getMessage());
-            result = "No Worries! AOP is still running";
+            throw exc;
         }
 
         long end = System.currentTimeMillis();
