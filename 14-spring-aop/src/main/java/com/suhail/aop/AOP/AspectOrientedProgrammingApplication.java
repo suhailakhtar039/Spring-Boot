@@ -20,8 +20,13 @@ public class AspectOrientedProgrammingApplication {
 	public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO){
 		return runner->{
 			// demoTheBeforeAdvice(accountDAO, membershipDAO);
-			demoTheAfterAdvice(accountDAO);
+			// demoTheAfterAdvice(accountDAO);
+			demoTheAfterThrowingAdvice(accountDAO);
 		};
+	}
+
+	private void demoTheAfterThrowingAdvice(AccountDAO accountDAO) {
+
 	}
 
 	private void demoTheAfterAdvice(AccountDAO accountDAO) {
