@@ -15,8 +15,11 @@ import java.util.List;
 public class MyDemoLoggingAspect {
 
     @After("execution(* com.suhail.aop.AOP.dao.AccountDAO.findAccounts(..))")
-    public void afterFinallyFindAccountsService(){
-        System.out.println("<=========Finally came outside=========>");
+    public void afterFinallyFindAccountsAdvice(JoinPoint joinPoint){
+
+        String method = joinPoint.getSignature().toShortString();
+        System.out.println("\n\n====> Executing after finally advice: " + method);
+
     }
     @AfterThrowing(
             pointcut = "execution(* com.suhail.aop.AOP.dao.AccountDAO.findAccounts(..))",
