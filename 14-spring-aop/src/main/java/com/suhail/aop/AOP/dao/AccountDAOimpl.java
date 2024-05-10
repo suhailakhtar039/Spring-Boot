@@ -49,11 +49,15 @@ public class AccountDAOimpl implements AccountDAO{
 
     @Override
     public List<Account> findAccounts(){
-
+        return findAccounts(false);
     }
 
     @Override
     public List<Account> findAccounts(boolean tripWire) {
+        if(tripWire){
+            throw new RuntimeException("No soup for You!!!!");
+        }
+
         List<Account> myAccounts = new ArrayList<>();
         myAccounts.add(new Account("suhail","5"));
         myAccounts.add(new Account("akhtar","6"));
