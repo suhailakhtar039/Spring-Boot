@@ -2,10 +2,7 @@ package com.suhail.aop.AOP.aspect;
 
 import com.suhail.aop.AOP.Account;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -17,6 +14,10 @@ import java.util.List;
 @Order(2)
 public class MyDemoLoggingAspect {
 
+    @After("execution(* com.suhail.aop.AOP.dao.AccountDAO.findAccounts(..))")
+    public void afterFinallyFindAccountsService(){
+        System.out.println("<=========Finally came outside=========>");
+    }
     @AfterThrowing(
             pointcut = "execution(* com.suhail.aop.AOP.dao.AccountDAO.findAccounts(..))",
             throwing = "exc"
