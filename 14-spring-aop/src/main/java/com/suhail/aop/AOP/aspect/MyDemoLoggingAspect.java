@@ -2,6 +2,7 @@ package com.suhail.aop.AOP.aspect;
 
 import com.suhail.aop.AOP.Account;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
@@ -14,6 +15,23 @@ import java.util.List;
 @Order(2)
 public class MyDemoLoggingAspect {
 
+    @Around("execution(* com.suhail.aop.AOP.service.TrafficFortuneService.getFortune(..))")
+    public Object aroundGetFortune(ProceedingJoinPoint proceedingJoinPoint)throws Throwable{
+        String method = proceedingJoinPoint.getSignature().toShortString();
+        System.out.println("\n====>Executing around on method: " + method);
+
+        // start timestamp
+        long begin = System.currentTimeMillis();
+
+        Object result = proceedingJoinPoint.proceed();
+
+        long end = System.currentTimeMillis();
+
+        long duration = end - begin;
+        System.out.println("Total time: " + duration/1000);
+
+        return result;
+    }
     @After("execution(* com.suhail.aop.AOP.dao.AccountDAO.findAccounts(..))")
     public void afterFinallyFindAccountsAdvice(JoinPoint joinPoint){
 

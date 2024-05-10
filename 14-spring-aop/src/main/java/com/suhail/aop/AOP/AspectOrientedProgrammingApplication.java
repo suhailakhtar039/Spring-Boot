@@ -2,6 +2,7 @@ package com.suhail.aop.AOP;
 
 import com.suhail.aop.AOP.dao.AccountDAO;
 import com.suhail.aop.AOP.dao.MembershipDAO;
+import com.suhail.aop.AOP.service.TrafficFortuneService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,14 +18,24 @@ public class AspectOrientedProgrammingApplication {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO) {
+    public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO, TrafficFortuneService trafficFortuneService) {
         return runner -> {
             // demoTheBeforeAdvice(accountDAO, membershipDAO);
             // demoTheAfterAdvice(accountDAO);
             // demoTheAfterThrowingAdvice(accountDAO);
-            demoTheAfterFinallyAdvice(accountDAO);
-
+            // demoTheAfterFinallyAdvice(accountDAO);
+            demoTheAroundAdvice(trafficFortuneService);
         };
+    }
+
+    private void demoTheAroundAdvice(TrafficFortuneService trafficFortuneService) {
+        System.out.println("\nMain Program: demoTheAroundAdvice");
+        System.out.println("calling get fortune");
+
+        String data = trafficFortuneService.getFortune();
+
+        System.out.println("\nMy fortune is: " + data);
+        System.out.println("Finished");
     }
 
     private void demoTheAfterFinallyAdvice(AccountDAO accountDAO) {
